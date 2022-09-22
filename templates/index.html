@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Speech synthesiser</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  </head>
+
+  <body>
+    <h1>Speech synthesiser</h1>
+
+    <p>
+      Enter some text in the input below and press "convert" button to get audio controls.
+    </p>
+
+    <form method="post">
+      <label for="txt">Enter text</label>
+      <input name="txt" type="text" class="txt" value="{{ request.form['txt'] }}" />
+      {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+      {% endfor %}
+      <div class="controls">
+        <button id="convert" type="submit">Convert</button>
+      </div>
+      <div class="controls">
+        {% if audio %}
+          <video width="300" height="50" controls>
+            <source src="{{ url_for('static', filename='output.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </video>
+        {% elif message %}
+          <p>{{ message }}</p>
+        {% endif %}
+      </div>
+    </form>
+  </body>
+</html>
