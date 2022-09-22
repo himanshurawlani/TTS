@@ -33,7 +33,13 @@ Go to the directory containing the app.py file and run the following commands. U
 ```
 $ export FLASK_DEBUG=1
 $ export FLASK_ENV=development
-$ flask run
+$ flask run --port=5001
 ```
 
-You should now be able to access the website on http://127.0.0.1:5000. After converting text to audio, the audio controls on the webpage will allow you to play and download the audio file.
+You should now be able to access the website on http://127.0.0.1:5001. After converting text to audio, the audio controls on the webpage will allow you to play and download the audio file.
+
+## 3. Expected output
+
+After entering some text and clicking on convert, your output should look like this:
+
+![Expected output](output.png)
